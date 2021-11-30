@@ -1,0 +1,18 @@
+<mat-card>
+    <mat-card-title>{{ productFormSettings.title }}</mat-card-title>
+
+    <form id="productFormId" action="" [formGroup]="productForm" (ngSubmit)=onSubmit()>
+        <mat-form-field>
+            <input matInput placeholder="Name" type="text" formControlName="name">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Price" type="number" formControlName="price">
+        </mat-form-field>
+    </form>    
+    <button mat-raised-button type="submit" form="productFormId" [disabled]="!productForm.valid && productFormSettings.isValidatorRequired" [color]="productFormSettings.buttonColor">
+        {{ productFormSettings.buttonText }}
+    </button>
+    <button mat-raised-button routerLink="/products" color="">
+        Cancel
+    </button>        
+</mat-card>

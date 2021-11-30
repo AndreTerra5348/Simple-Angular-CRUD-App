@@ -1,0 +1,20 @@
+.full-width-table {
+  width: 100%;
+}
+
+.edit {
+  margin-right: 10px;
+}
+
+.edit > em {
+  color: #d9cd26;
+}
+
+.delete > em {
+  color: #e35e6b;
+}
+
+.spinner {
+  margin: auto;
+  padding-top: 50px;
+}

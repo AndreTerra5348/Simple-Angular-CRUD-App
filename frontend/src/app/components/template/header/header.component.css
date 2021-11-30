@@ -1,0 +1,38 @@
+.nav-toggle {
+    margin-right: 10px;
+    margin-left: -10px;    
+}
+
+.title-link {
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+    text-decoration: none;
+    color: #000;
+}
+
+.status-container {    
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.page-location-container {    
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    padding-right: 10px;
+    padding-left: 5px;   
+}
+
+.page-location-container .icon {
+    padding-right: 5px;    
+}
+
+.status-icon {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    padding: 5px;
+    margin-right: 10px;
+}

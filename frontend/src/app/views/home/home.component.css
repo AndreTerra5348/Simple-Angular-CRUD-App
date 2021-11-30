@@ -1,0 +1,48 @@
+.home {
+    text-align: center;    
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.subtitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.0rem;
+}
+
+.content .mat-icon {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.content strong {
+    padding: 5px;
+    display: inline-block;
+}
+
+.angular-logo {
+    max-height: 40px;
+    padding-bottom: 10px;
+}
+
+.angular-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+}
+
+

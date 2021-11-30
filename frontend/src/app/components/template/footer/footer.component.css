@@ -1,0 +1,35 @@
+.footer {
+    height: 80px;
+    background-color: rgba(240, 253, 255, 0.596);
+}
+
+.signature {
+    font-size: 1.1rem;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    padding-right: 10px;
+}
+
+.signature strong{
+    padding: 5px;
+    display: inline-block;
+}
+
+.logo-container {
+    display: flex;    
+    align-items: center;
+    border-radius: 15px;
+    margin-left: 10px;
+    background-color: #fff;
+}
+
+.logo-link {
+    padding: 10px 10px 0px 10px;
+}
+
+.logo {
+    max-height: 25px;    
+}
+

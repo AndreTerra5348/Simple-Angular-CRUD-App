@@ -1,0 +1,26 @@
+.container {
+    margin-top: 5px;    
+    min-height: 84.1%;
+    
+}
+
+.sidenav {
+    background-color: #3f51b5;
+    border-radius: 0px 0px 15px 0px;
+    
+}
+
+.sidenav a:hover {
+    color: #000;
+}
+
+.sidenav a {
+    color: #FFF;
+    border-radius: 0px 0px 15px 0px;
+}
+
+.content {
+    padding: 5px;
+    background-color: #FFF;
+    border-radius: 10px;
+}

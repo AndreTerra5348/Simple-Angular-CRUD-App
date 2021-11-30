@@ -1,0 +1,20 @@
+<mat-toolbar class="header mat-elevation-z4">
+    <button mat-icon-button (click)="toggleNav()" class="nav-toggle">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <a href="" class="title-link"><strong>Simple CRUD App</strong></a>
+
+    <span class="status-container">
+        <div class="status-icon mat-elevation-z3" *ngIf="headerSettings.hasStatusIcon">
+            <mat-icon class="icon material-icons-outlined"> {{ statusIcon }} </mat-icon>
+        </div>
+    
+        <div class="page-location-container mat-elevation-z3">
+            <mat-icon class="icon">{{headerSettings.icon}}</mat-icon>
+            <span>{{headerSettings.title}}</span>
+        </div>
+    </span>
+
+
+</mat-toolbar>

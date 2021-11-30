@@ -1,0 +1,48 @@
+<div class="mat-elevation-z8">
+  <table mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource" (matSortChange)="onSortChamge($event)">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th id="idHeaderId" mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th id="nameHeaderId" mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let row">{{row.name | titlecase}}</td>
+    </ng-container>
+
+    <!-- Price Column -->
+    <ng-container matColumnDef="price">
+      <th id="priceHeaderId" mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+      <td mat-cell *matCellDef="let row">{{row.price | currency: '': 'symbol-narrow'}}</td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th id="actionHeaderId" mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let row">
+          <a routerLink="/products/update/{{ row.id }}" class="edit">
+              <em class="material-icons">edit</em>
+          </a>
+          <a routerLink="/products/delete/{{ row.id }}" class="delete">
+              <em class="material-icons">delete</em>
+          </a>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]"
+      (page)="getPage($event)"
+      aria-label="Select page">
+  </mat-paginator>
+
+  <mat-spinner class="spinner" *ngIf="!isContentLoaded"></mat-spinner>
+</div>
