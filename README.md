@@ -8,19 +8,21 @@ This is a simple Frontend CRUD application made with Angular Framework, and a Js
 
 I made this project to learn the basics of Angular
 
+
+### This application can:
+- **C**reate, **R**ead, **U**pdate, and **D**elete products in a database
+
+### Products have:
+- name (editable)
+- price (editable)
+- id (non-editable)
+
 ### This application database hava two modes:
 1. **Server Database**: it first tries to connect to the json-server and fetch the data (to use the Json-Server database you need to run this application locally, see [Getting Started](#getting-started))
 
 
 2. **Local Database**: if it fails, it'll use its local database
 
-### With this application you can:
-- **C**reate, **R**ead, **U**pdate, and **D**elete products
-
-### Products have:
-- name (editable)
-- price (editable)
-- id (non-editable)
 
 [App Demo Page](https://andreterra5348.github.io/Simple-Angular-CRUD-App/)
 
@@ -42,10 +44,10 @@ I made this project to learn the basics of Angular
 1. Clone this repository
 
 ```shell
-git clone https://github.com/ 
+git clone https://github.com/AndreTerra5348/Simple-Angular-CRUD-App.git
 ```
 
-2. install backend dependencies, and start the serevr
+2. install backend dependencies, and start the server
 ```bash
 cd backend
 npm install
