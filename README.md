@@ -22,7 +22,7 @@ I made this project to learn the basics of Angular
 - price (editable)
 - id (non-editable)
 
-[Link to the app]()
+[App Demo Page](https://andreterra5348.github.io/Simple-Angular-CRUD-App/)
 
 <img src="assets\page.jpg" alt="page" width="80%"> 
 <img src="assets\page2.jpg" alt="page2" width="80%">
