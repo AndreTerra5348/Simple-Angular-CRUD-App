@@ -105,6 +105,9 @@
           "options": {
             "browserTarget": "frontend:build"
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
