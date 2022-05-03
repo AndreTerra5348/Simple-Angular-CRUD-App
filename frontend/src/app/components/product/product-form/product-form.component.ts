@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { InMemoryProductService } from '../in-memory-product.service';
 import { Product } from '../product.model';
-import { ProductService } from '../product.service';
 import { ProductFormService } from './product-form.service';
 
-export interface ProductFormSettings{
+export interface ProductFormSettings {
   title: string
   buttonText: string
   buttonColor: string
@@ -18,9 +18,9 @@ export interface ProductFormSettings{
 })
 export class ProductFormComponent implements OnInit {
   @Input() productFormSettings: ProductFormSettings = {
-    title:"",
-    buttonText:"",
-    buttonColor:"primary",
+    title: "",
+    buttonText: "",
+    buttonColor: "primary",
     isValidatorRequired: true
   }
 
@@ -31,30 +31,30 @@ export class ProductFormComponent implements OnInit {
   });
 
   // subscribe before parent's init method
-  constructor(private productService: ProductService,
+  constructor(private inMemoryProductService: InMemoryProductService,
     private productFormService: ProductFormService,
     private fb: FormBuilder) {
-      // update form value
-      this.productFormService.getProduct().subscribe({
-        next: (product: Product) => this.productForm.patchValue(product)
-      });
+    // update form value
+    this.productFormService.getProduct().subscribe({
+      next: (product: Product) => this.productForm.patchValue(product)
+    });
 
-      // update properties edit state
-      this.productFormService.getFormPropertyToggle().subscribe((property: string) => {
-        if(this.productForm.controls[property].enabled){
-          this.productForm.controls[property].disable()
-        }else{
-          this.productForm.controls[property].enable()
-        }
-      })
+    // update properties edit state
+    this.productFormService.getFormPropertyToggle().subscribe((property: string) => {
+      if (this.productForm.controls[property].enabled) {
+        this.productForm.controls[property].disable()
+      } else {
+        this.productForm.controls[property].enable()
+      }
+    })
   }
 
   ngOnInit(): void {
   }
 
-  onSubmit(): void{
-    if(this.productForm.invalid){
-      this.productService.showMessage("Invalid Product!");
+  onSubmit(): void {
+    if (this.productForm.invalid) {
+      this.inMemoryProductService.showMessage("Invalid Product!");
       return;
     }
     this.productFormService.onFormUpdate(this.productForm.getRawValue());

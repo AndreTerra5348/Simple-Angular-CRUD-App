@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsHeaderSettings, StatusIconOffline, StatusIconOnline } from 'src/app/components/template/header/header.component';
+import { ProductsHeaderSettings } from 'src/app/components/template/header/header.component';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +8,9 @@ import { ProductsHeaderSettings, StatusIconOffline, StatusIconOnline } from 'src
 })
 export class HomeComponent implements OnInit {
   productIcon: string = ProductsHeaderSettings.icon;
-  statusIconOnline: string = StatusIconOnline;
-  statusIconOffline: string = StatusIconOffline;
 
-  constructor() {    
-   }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
