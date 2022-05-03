@@ -17,14 +17,13 @@ I made this project to learn the basics of Angular
 - price (editable)
 - id (non-editable)
 
-### This application database hava two modes:
-1. **Server Database**: it first tries to connect to the json-server and fetch the data (to use the Json-Server database you need to run this application locally, see [Getting Started](#getting-started))
 
+to use the Json-Server database you need to run this application locally, see [Getting Started](#getting-started)
 
-2. **Local Database**: if it fails, it'll use its local database
 
 
 [App Demo Page](https://andreterra5348.github.io/Simple-Angular-CRUD-App/)
+(In Memory Database only)
 
 <img src="assets\page.jpg" alt="page" width="80%"> 
 <img src="assets\page2.jpg" alt="page2" width="80%">
