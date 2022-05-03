@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { LocalProductService } from '../local-product.service';
 import { ProductFormSettings } from '../product-form/product-form.component';
 import { ProductFormService } from '../product-form/product-form.service';
 import { Product } from '../product.model';
@@ -23,33 +22,12 @@ export class ProductUpdateComponent implements OnInit, OnDestroy {
   private productFormSubscription!: Subscription;
 
   constructor(private productService: ProductService,
-    private localProductService: LocalProductService,
     private productFormService: ProductFormService,
     private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get("id")
-    this.productService.isEnabled ?
-      this.handleServerData(id!) :
-      this.handleLocalData(id!)
-  }
-
-  private handleLocalData(id: string) {
-    // get product and update Form's data
-    const _product: Product = this.localProductService.readById(id);
-    this.productFormService.onProductUpdate(_product);
-
-    // react to form submission and update the product
-    this.productFormSubscription = this.productFormService.getForm().subscribe({
-      next: (product: Product) => {
-        this.localProductService.update(product);
-        this.showUpdateMessage();
-      },
-    });
-  }
-
-  private handleServerData(id: string): void {
+    const id = this.route.snapshot.paramMap.get("id") || ""
     // get product and update Form's data
     this.productService.readById(id).subscribe({
       next: (product: Product) => this.productFormService.onProductUpdate(product)

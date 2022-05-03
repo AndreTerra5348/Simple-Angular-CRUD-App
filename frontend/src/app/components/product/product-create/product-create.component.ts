@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { LocalProductService } from '../local-product.service';
 import { ProductFormSettings } from '../product-form/product-form.component';
 import { ProductFormService } from '../product-form/product-form.service';
 import { Product } from '../product.model';
@@ -13,7 +12,7 @@ import { ProductService } from '../product.service';
   styleUrls: ['./product-create.component.css']
 })
 export class ProductCreateComponent implements OnInit, OnDestroy {
-  productFormSettings : ProductFormSettings = {
+  productFormSettings: ProductFormSettings = {
     title: "New Product",
     buttonText: "Create",
     buttonColor: "primary",
@@ -23,11 +22,10 @@ export class ProductCreateComponent implements OnInit, OnDestroy {
   private productFormSubscription!: Subscription;
 
   constructor(private productService: ProductService,
-    private localProductService: LocalProductService,
-    private productFormService: ProductFormService,    
-    private router: Router) { }  
+    private productFormService: ProductFormService,
+    private router: Router) { }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
     // react to form submission and create the product
     this.productFormSubscription = this.productFormService.getForm().subscribe({
       next: (product: Product) => this.createProduct(product)
@@ -35,27 +33,16 @@ export class ProductCreateComponent implements OnInit, OnDestroy {
   }
 
   private createProduct(product: Product): void {
-    this.productService.isEnabled ? 
-      this.handleServerData(product) :
-      this.handleLocalData(product)     
-  }
-
-  private handleServerData(product: Product): void {
     this.productService.create(product).subscribe({
       next: () => this.showCreatedMessage()
     });
-  }
-
-  private handleLocalData(product: Product): void {
-    this.localProductService.create(product);
-    this.showCreatedMessage();
   }
 
   private showCreatedMessage(): void {
     this.productService.showMessage("Product Created!");
     this.router.navigate(['products/'])
   }
-  
+
   ngOnDestroy(): void {
     this.productFormSubscription.unsubscribe();
   }

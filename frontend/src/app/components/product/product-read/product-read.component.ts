@@ -4,7 +4,6 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { BehaviorSubject, delay } from 'rxjs';
-import { LocalProductService } from '../local-product.service';
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
 
@@ -24,12 +23,11 @@ export class ProductReadComponent implements OnInit, AfterViewInit {
   products: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
   productCount: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   isContentLoaded: boolean = false;
-  
+
   dataSource: MatTableDataSource<Product> = new MatTableDataSource<Product>(this.products.getValue());
   length: number = this.productCount.getValue();
 
-  constructor(private productService: ProductService,
-    private localProductService: LocalProductService) { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
     this.updateDataSource();
@@ -59,12 +57,6 @@ export class ProductReadComponent implements OnInit, AfterViewInit {
     const active = this.sort?.active || "id";
     const direction = this.sort?.direction || "asc";
 
-    this.productService.isEnabled ?
-      this.handleServerData(pageIndex, pageSize, active, direction) :
-      this.handleLocalData(pageIndex, pageSize, active, direction)
-  }
-
-  private handleServerData(pageIndex: number, pageSize: number, active: string, direction: string): void {
     this.productService.read(pageIndex + 1, pageSize, active, direction).subscribe({
       next: (res) => {
         this.products.next(res.body as Product[])
@@ -74,23 +66,8 @@ export class ProductReadComponent implements OnInit, AfterViewInit {
         }
       },
       error: (err) => {
-        this.handleServerError(err)
-        this.productService.disable();
-        this.handleLocalData(pageIndex, pageSize, active, direction)
+        this.productService.showMessage("Error: " + err.message);
       }
     });
   }
-
-  private handleServerError(err: HttpErrorResponse): void {
-    this.productService.showMessage("Local Database: Enabled")
-  }
-
-  private handleLocalData(pageIndex: number, pageSize: number, active: string, direction: string): void {
-    const products: Product[] = this.localProductService.read(pageIndex, pageSize, active, direction)
-    const productCount: number = this.localProductService.getProductCount();
-    this.products.next(products)
-    this.productCount.next(productCount);
-    this.isContentLoaded = true;
-  }
-
 }

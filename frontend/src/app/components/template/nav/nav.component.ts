@@ -30,7 +30,6 @@ export class NavComponent implements OnInit, OnDestroy {
         const isHome = !event.url.includes("/products")
         const headerSettings: HeaderSettings = isHome ? HomeHeaderSettings : ProductsHeaderSettings;
         this.headerService.changeHeaderSettings(headerSettings);
-        // this.navService.changeState(isHome);
       });
 
     navService.getNavState().subscribe(state => {
